@@ -1,6 +1,10 @@
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+TODO: Upcasting student to user
+will make (register, validateUser) Easier 
+ */
 public class Printing {
     Scanner in = new Scanner(System.in);
     boolean validate(int l, int r, int val) {
@@ -59,21 +63,17 @@ public class Printing {
     }
     boolean validateUser(String username, String password, boolean isStudent) {
         if(isStudent) {
-            for(Student student: Student.allStudent) {
-                if(student.validate(username, password)){
-                    Student.currentStudent = student;
-                    return true;
-                }
-            }
-            return false;
+            Student current = Student.validate(username, password);
+            if(current == null)
+                return false;
+            Student.currentStudent = current;
+            return true;
         } else {
-            for(Doctor doctor : Doctor.allDoctor) {
-                if(doctor.validate(username, password)){
-                    Doctor.currentDoctor = doctor;
-                    return true;
-                }
-            }
-            return false;
+            Doctor current = Doctor.validate(username, password);
+            if(current == null)
+                return false;
+            Doctor.currentDoctor = current;
+            return true;
         }
     }
     public void login(int choice) {
@@ -96,7 +96,6 @@ public class Printing {
                 System.out.println("Username Already registered");
                 username = enterUsername();
             }
-
         } else {
             while(!Doctor.validateUsername(username)) {
                 System.out.println("Username Already registered");
@@ -114,9 +113,6 @@ public class Printing {
             doctorFlow();
         }
     }
-    public void viewCourses() {
-        Student.currentStudent.viewCourses();
-    }
     public void doctorFlow() {
 
     }
@@ -132,16 +128,15 @@ public class Printing {
                 ArrayList<Course> unregisterCourses = Student.currentStudent.viewUnregisteredCourses();
                 Course.viewCourses(unregisterCourses);
                 int x = in.nextInt();
-                while(!validate(1, unregisterCourses.size() + 1, x)) {
+                while(!validate(1, unregisterCourses.size() + 1, x))
                     x = in.nextInt();
-                }
                 if(x == unregisterCourses.size() + 1)
                     continue;
                 --x;
                 Student.currentStudent.courses.add(unregisterCourses.get(x));
                 System.out.println("Course Registred Successfuly :)");
             } else
-                viewCourses();
+                Student.currentStudent.viewCourses();
         }
     }
 }

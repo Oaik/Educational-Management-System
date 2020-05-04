@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import java.util.ArrayList;
 
 public class Doctor extends User {
@@ -22,5 +23,12 @@ public class Doctor extends User {
         ArrayList<User> temp = new ArrayList<User>();
         for(Doctor doctor: allDoctor) temp.add(doctor);
         return User.validateUsername(username, temp);
+    }
+    public static Doctor validate(String username, String password) {
+        for(Doctor doctor: allDoctor) {
+            if(doctor.username.equals(username) && doctor.password.equals(password))
+                return doctor;
+        }
+        return null;
     }
 }

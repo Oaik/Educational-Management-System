@@ -23,4 +23,11 @@ public class Student extends User {
         for(Student student: allStudent) temp.add(student);
         return User.validateUsername(username, temp);
     }
+    public static Student validate(String username, String password) {
+        for(Student student: allStudent) {
+            if(student.username.equals(username) && student.password.equals(password))
+                return student;
+        }
+        return null;
+    }
 }

@@ -32,9 +32,6 @@ public class User {
             System.out.println(courses.get(i).name);
         }
     }
-    public boolean validate(String username, String password) {
-        return this.username.equals(username) && this.password.equals(password);
-    }
     public static boolean validateUsername(String username, ArrayList<User> allUsers) {
         for(User user: allUsers) {
             if(user.username.equals(username))
