@@ -1,39 +1,26 @@
-import javax.print.Doc;
 import java.util.ArrayList;
 
-public class Doctor {
-    String username, id, password;
+public class Doctor extends User {
+    Doctor() {}
+    Doctor(String username, String password) {
+        super(username, password);
+    }
+    Doctor(String username, String password, ArrayList<Course> courses) {
+        super(username, password, courses);
+    }
     public static Doctor currentDoctor;
     public static ArrayList<Doctor> allDoctor;
-    ArrayList<Course> courses = new ArrayList<Course>();
-    Doctor() {}
-    Doctor(String username, String passowrd) {
-        this.username = username;
-        this.password = passowrd;
-    }
     public static ArrayList<Doctor> initRandom(int num) {
-        ArrayList<Doctor> doctors = new ArrayList<Doctor>();
-        for (int i = 1; i <= num; ++i) {
-            String name = "Doc00" + Integer.toString(i);
-            Doctor a = new Doctor(name, name);
-            doctors.add(a);
-        }
-        allDoctor = doctors;
-        return doctors;
-    }
-    public void viewCourses() {
-        for (int i = 0; i < courses.size();++i) {
-            System.out.println(courses.get(i).name);
-        }
+        ArrayList<User> doctors = initRandom(num, "doc");
+        ArrayList<Doctor> temp = new ArrayList<Doctor>();
+        for(User tt: doctors)
+            temp.add(new Doctor(tt.username, tt.password, tt.courses));
+        allDoctor = temp;
+        return allDoctor;
     }
     public static boolean validateUsername(String username) {
-        for(Student student: Student.allStudent) {
-            if(student.username == username)
-                return false;
-        }
-        return true;
-    }
-    public boolean validate(String username, String password) {
-        return this.username == username && this.password == password;
+        ArrayList<User> temp = new ArrayList<User>();
+        for(Doctor doctor: allDoctor) temp.add(doctor);
+        return User.validateUsername(username, temp);
     }
 }

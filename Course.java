@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import javax.print.Doc;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -14,23 +16,22 @@ public class Course {
     }
     public static ArrayList<Course> initRandom(int coursesNum, int studentNum, int doctorNum) {
         ArrayList<Course> courses = new ArrayList<Course>();
-        for (int i = 1; i <= coursesNum; ++i) {
-            Course a = new Course();
-            a.name = "CS10" + Integer.toString(i);
-            a.ID = "00" + Integer.toString(i);
-            courses.add(a);
-        }
         ArrayList<Student> students = Student.initRandom(studentNum);
-        for (Student currentStudent: students) {
-            int rand = (int)(Math.random() * coursesNum);
-            courses.get(rand).students.add(currentStudent);
-            currentStudent.courses.add(courses.get(rand));
-        }
         ArrayList<Doctor> doctors = Doctor.initRandom(doctorNum);
-        for (Doctor currentDoctor: doctors) {
-            int rand = (int)(Math.random() * coursesNum);
-            courses.get(rand).doctor = currentDoctor;
-            currentDoctor.courses.add(courses.get(rand));
+        for (int i = 1; i <= coursesNum; ++i) {
+            Course course = new Course();
+            course.name = "CS10" + Integer.toString(i);
+            course.ID = "00" + Integer.toString(i);
+
+            int rand = (int)(Math.random() * studentNum);
+            course.students.add(students.get(rand));
+            students.get(rand).courses.add(course);
+
+            rand = (int)(Math.random() * doctorNum);
+            course.doctor = (doctors.get(rand));
+            doctors.get(rand).courses.add(course);
+
+            courses.add(course);
         }
         allCourses = courses;
         return courses;

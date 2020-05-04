@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Printing {
-
     Scanner in = new Scanner(System.in);
     boolean validate(int l, int r, int val) {
         if(val >= l && val <= r)
