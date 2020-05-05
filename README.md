@@ -1,4 +1,4 @@
-<h2>Educational Management System</h2>
+<h2>🚀 Educational Management System</h2>
 <div>
 
   [![GitHub contributors](https://img.shields.io/github/contributors/oaik/Educational-Management-System)](https://github.com/oaik/Educational-Management-System/contributors)
@@ -24,7 +24,7 @@ it will validate your input and in case of wrong input interval it will ask you 
 <img width="1000px" src="https://github.com/oaik/Educational-Management-System/blob/master/imagesandgifs/sample.gif">
 <hr>
 
-<h2>Current features</h2>
+<h2>🚀 Current features</h2>
 <h3>Students</h3>
 <ul>
   <li>
