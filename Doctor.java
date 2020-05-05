@@ -11,6 +11,13 @@ public class Doctor extends User {
     }
     public static Doctor currentDoctor;
     public static ArrayList<Doctor> allDoctor;
+    public static void printAll() {
+        for (int i = 0; i < allDoctor.size(); i++) {
+            System.out.println(Integer.toString(i + 1) + ": ");
+            User.print(allDoctor.get(i));
+            System.out.println();
+        }
+    }
     public static ArrayList<Doctor> initRandom(int num) {
         ArrayList<User> doctors = initRandom(num, "doc");
         ArrayList<Doctor> temp = new ArrayList<Doctor>();
@@ -24,7 +31,7 @@ public class Doctor extends User {
         for(Doctor doctor: allDoctor) temp.add(doctor);
         return User.validateUsername(username, temp);
     }
-    public static Doctor validate(String username, String password) {
+    public static Doctor validateDoctor(String username, String password) {
         for(Doctor doctor: allDoctor) {
             if(doctor.username.equals(username) && doctor.password.equals(password))
                 return doctor;

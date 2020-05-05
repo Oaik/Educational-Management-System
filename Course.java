@@ -10,6 +10,21 @@ public class Course {
     Doctor doctor;
     ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Course> allCourses = new ArrayList<Course>();
+    public static void print(Course course) {
+        System.out.println("Course name: " + course.name);
+//        System.out.println("ID: " + course.ID);
+        System.out.println("Doctor name: " + course.doctor.username);
+        System.out.println("Students: ");
+        for (int i = 0; i < course.students.size(); i++)
+            System.out.println(Integer.toString(i + 1) + ": " + course.students.get(i).username);
+    }
+    public static void printAll() {
+        for (int i = 0; i < allCourses.size(); i++) {
+            System.out.println(Integer.toString(i + 1) + ": ");
+            Course.print(allCourses.get(i));
+            System.out.println();
+        }
+    }
     public static void viewCourses(ArrayList<Course> courses) {
         for (int i = 0; i < courses.size();++i)
             System.out.println(Integer.toString(i + 1) + '-' + courses.get(i).name);
