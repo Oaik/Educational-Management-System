@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class User {
-    public String username, id, password;
+    public String username, ID, password;
     ArrayList<Course> courses = new ArrayList<Course>();
     User() {}
     User(String username, String passowrd) {

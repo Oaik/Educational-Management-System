@@ -1,11 +1,6 @@
-import javax.print.Doc;
-import java.util.ArrayList;
 import java.util.Scanner;
-/*
-TODO: Upcasting student to user
-will make (register, validateUser) Easier 
- */
-public class Printing {
+
+public abstract class Printing {
     public static Scanner in = new Scanner(System.in);
     public static boolean validate(int l, int r, int val) {
         if(val >= l && val <= r)
@@ -26,6 +21,11 @@ public class Printing {
     public static void studentMenu() {
         System.out.println("1-Register in course");
         System.out.println("2-View all registered courses");
+        System.out.println("3-Logout");
+    }
+    public static void doctorMenu() {
+        System.out.println("1-Create a course");
+        System.out.println("2-View your courses");
         System.out.println("3-Logout");
     }
     public static String prompt(String name) {

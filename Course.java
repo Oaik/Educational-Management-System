@@ -8,8 +8,14 @@ import java.util.Random;
 public class Course {
     String name, ID;
     Doctor doctor;
+    Course() {}
+    Course(String courseName, Doctor doctor) {
+        this.name = courseName;
+        this.doctor = doctor;
+    }
     ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Course> allCourses = new ArrayList<Course>();
+    public static Course currentCourse;
     public static void print(Course course) {
         System.out.println("Course name: " + course.name);
 //        System.out.println("ID: " + course.ID);
@@ -29,6 +35,7 @@ public class Course {
         for (int i = 0; i < courses.size();++i)
             System.out.println(Integer.toString(i + 1) + '-' + courses.get(i).name);
     }
+
     public static ArrayList<Course> initRandom(int coursesNum, int studentNum, int doctorNum) {
         ArrayList<Course> courses = new ArrayList<Course>();
         ArrayList<Student> students = Student.initRandom(studentNum);
@@ -50,6 +57,13 @@ public class Course {
         }
         allCourses = courses;
         return courses;
+    }
+    public static boolean validateName(String courseName) {
+        for (Course course: allCourses) {
+            if(course.name.equals(courseName))
+                return false;
+        }
+        return true;
     }
     public boolean cmp(Course temp) {
         return name.equals(temp.name);
