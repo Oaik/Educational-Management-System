@@ -44,9 +44,9 @@ it will validate your input and in case of wrong input interval it will ask you 
     <p>View their courses</p>
   </li>
   <li>
-    Create an assignment in their courses 
+    <p>Create an assignment in their courses</p>
   </li>
   <li>
-    view all solutions of any assignment in their courses 
+    <p>view all student solutions of any assignment in their courses</p>
   </li>
 </ul>
