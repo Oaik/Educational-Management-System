@@ -7,7 +7,7 @@ public class Student extends User {
     }
     Student(String username, String password, ArrayList<Course> courses) { super(username, password, courses); }
     public static Student currentStudent;
-    public static ArrayList<Student> allStudent;
+    public static ArrayList<Student> allStudent = new ArrayList<>();;
     public static void printAll() {
         for (int i = 0; i < allStudent.size(); i++) {
             System.out.println(Integer.toString(i + 1) + ": ");
@@ -15,13 +15,12 @@ public class Student extends User {
             System.out.println();
         }
     }
-    public static ArrayList<Student> initRandom(int num) {
-        ArrayList<User> students = initRandom(num, "stu");
-        ArrayList<Student> temp = new ArrayList<Student>();
-        for(User tt: students)
-            temp.add(new Student(tt.username, tt.password, tt.courses));
-        allStudent = temp;
-        return allStudent;
+    public static void initRandom(int num) {
+        for (int i = 1; i <= num; ++i) {
+            String name = "stu" + Integer.toString(i);
+            Student current = new Student(name, name);
+            Student.allStudent.add(current);
+        }
     }
     public static boolean validateUsername(String username) {
         ArrayList<User> temp = new ArrayList<User>();

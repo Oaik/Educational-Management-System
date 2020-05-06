@@ -10,7 +10,7 @@ public class Doctor extends User {
         super(username, password, courses);
     }
     public static Doctor currentDoctor;
-    public static ArrayList<Doctor> allDoctor;
+    public static ArrayList<Doctor> allDoctor = new ArrayList<>();
     public static void printAll() {
         for (int i = 0; i < allDoctor.size(); i++) {
             System.out.println(Integer.toString(i + 1) + ": ");
@@ -18,13 +18,12 @@ public class Doctor extends User {
             System.out.println();
         }
     }
-    public static ArrayList<Doctor> initRandom(int num) {
-        ArrayList<User> doctors = initRandom(num, "doc");
-        ArrayList<Doctor> temp = new ArrayList<Doctor>();
-        for(User tt: doctors)
-            temp.add(new Doctor(tt.username, tt.password, tt.courses));
-        allDoctor = temp;
-        return allDoctor;
+    public static void initRandom(int num) {
+        for (int i = 1; i <= num; ++i) {
+            String name = "doc" + Integer.toString(i);
+            Doctor current = new Doctor(name, name);
+            Doctor.allDoctor.add(current);
+        }
     }
     public static boolean validateUsername(String username) {
         ArrayList<User> temp = new ArrayList<User>();

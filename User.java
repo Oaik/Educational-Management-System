@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
-public class User {
+public abstract class User {
     public String username, ID, password;
     ArrayList<Course> courses = new ArrayList<Course>();
     User() {}
-    User(String username, String passowrd) {
+    User(String username, String password) {
         this.username = username;
-        this.password = passowrd;
+        this.password = password;
     }
-    User(String username, String passowrd, ArrayList<Course> courses) {
-        this(username, passowrd);
+    User(String username, String password, ArrayList<Course> courses) {
+        this(username, password);
         this.courses = courses;
     }
     public static void print(User current) {
@@ -26,18 +26,9 @@ public class User {
     private String getPassword() {
         return this.password;
     }
-    public static ArrayList<User> initRandom(int num, String pre) {
-        ArrayList<User> users = new ArrayList<User>();
-        for (int i = 1; i <= num; ++i) {
-            String name = pre + Integer.toString(i);
-            User a = new User(name, name);
-            users.add(a);
-        }
-        return users;
-    }
     public void viewCourses() {
         for (int i = 0; i < courses.size();++i) {
-            System.out.println(courses.get(i).name);
+            System.out.println( i + 1 + "-" + courses.get(i).name);
         }
     }
     public static boolean validateUsername(String username, ArrayList<User> allUsers) {

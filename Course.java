@@ -8,6 +8,7 @@ import java.util.Random;
 public class Course {
     String name, ID;
     Doctor doctor;
+    public Assignment assignment = new Assignment();
     Course() {}
     Course(String courseName, Doctor doctor) {
         this.name = courseName;
@@ -38,20 +39,20 @@ public class Course {
 
     public static ArrayList<Course> initRandom(int coursesNum, int studentNum, int doctorNum) {
         ArrayList<Course> courses = new ArrayList<Course>();
-        ArrayList<Student> students = Student.initRandom(studentNum);
-        ArrayList<Doctor> doctors = Doctor.initRandom(doctorNum);
+        Student.initRandom(studentNum);
+        Doctor.initRandom(doctorNum);
         for (int i = 1; i <= coursesNum; ++i) {
             Course course = new Course();
             course.name = "CS10" + Integer.toString(i);
             course.ID = "00" + Integer.toString(i);
 
             int rand = (int)(Math.random() * studentNum);
-            course.students.add(students.get(rand));
-            students.get(rand).courses.add(course);
+            course.students.add(Student.allStudent.get(rand));
+            Student.allStudent.get(rand).courses.add(course);
 
             rand = (int)(Math.random() * doctorNum);
-            course.doctor = (doctors.get(rand));
-            doctors.get(rand).courses.add(course);
+            course.doctor = (Doctor.allDoctor.get(rand));
+            Doctor.allDoctor.get(rand).courses.add(course);
 
             courses.add(course);
         }

@@ -84,6 +84,28 @@ public class Flow {
                 Flow.createCourse();
             } else {
                 Doctor.currentDoctor.viewCourses();
+                System.out.println(Doctor.currentDoctor.courses.size() + 1 + "-Back");
+                int courseNum = in.nextInt();
+                while (!Printing.validate(1, Doctor.currentDoctor.courses.size() + 1, choice))
+                    courseNum = in.nextInt();
+                if(courseNum == Doctor.currentDoctor.courses.size() + 1)
+                    return;
+                --courseNum;
+                Printing.doctorAssignmentMenu();
+                int x = in.nextInt();
+                if(x == 3)
+                    return;
+                if(x == 1) {
+                    Course nw = Doctor.currentDoctor.courses.get(courseNum);
+                    Assignment oo = nw.assignment;
+                    Doctor.currentDoctor.courses.get(courseNum).assignment.viewAssignment();
+                }
+                else {
+                    String assignmentName = Printing.prompt("Enter Assignment name");
+                    String assignmentContent = Printing.prompt("Enter Assignment content");
+                    Assignment assignment = new Assignment(Doctor.currentDoctor, Doctor.currentDoctor.courses.get(courseNum), assignmentName, assignmentContent);
+                    Doctor.currentDoctor.courses.get(courseNum).assignment = assignment;
+                }
             }
         }
     }

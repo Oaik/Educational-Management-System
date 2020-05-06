@@ -28,6 +28,10 @@ public abstract class Printing {
         System.out.println("2-View your courses");
         System.out.println("3-Logout");
     }
+    public static void doctorAssignmentMenu() {
+        System.out.println("1-View current assignment");
+        System.out.println("2-Create assignment");
+    }
     public static String prompt(String name) {
         System.out.println("Enter Your " + name);
         return in.next();
