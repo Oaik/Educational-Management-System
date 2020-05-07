@@ -1,4 +1,4 @@
-public class AssignmentSolution {
+public class AssignmentSolution extends Assignment{
     Student student;
     String answer;
 //    int grade;
@@ -10,7 +10,19 @@ public class AssignmentSolution {
         this.student = student;
         this.answer = answer;
     }
-    public void submit(String assignmentAnswer) {
-        this.answer = assignmentAnswer;
+    AssignmentSolution(Student student, String answer, Assignment assignment) {
+        super(assignment.doctor, assignment.course, assignment.name, assignment.assignmentContent);
+        this.student = student;
+        this.answer = answer;
+    }
+
+    public void printAsiggnmentSolutionDetials() {
+        System.out.println("Student name " + student.username);
+        System.out.println("Student answer " + answer);
+    }
+    public void printAsiggnmentSolution() {
+        System.out.println("Assignment Name: " + name);
+        System.out.println("Assignment Content: " + assignmentContent);
+        printAsiggnmentSolutionDetials();
     }
 }

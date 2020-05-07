@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-
+// TODO: Just make one method for priniting an arraylist of opition
+// all methods should remain the same but only will differ with an arraylist with the options and calling a another prinintg method
+//
 public abstract class Printing {
     public static Scanner in = new Scanner(System.in);
     public static boolean validate(int l, int r, int val) {
@@ -31,6 +34,23 @@ public abstract class Printing {
     public static void doctorAssignmentMenu() {
         System.out.println("1-View current assignment");
         System.out.println("2-Create assignment");
+        System.out.println("3-Back");
+    }
+    public static void studentAssignmentMenu() {
+        System.out.println("1-View uncompleted assignment");
+        System.out.println("2-submit uncompleted assignment");
+        System.out.println("3-View submitted assignments in this course");
+        System.out.println("4-Back");
+    }
+    public static int viewAndSelectCourse(ArrayList<Course> currentCourses) {
+        Course.viewCourses(currentCourses);
+        System.out.println(currentCourses.size() + 1 + "-Back");
+        int courseNum = in.nextInt();
+        while (!Printing.validate(1, currentCourses.size() + 1, courseNum))
+            courseNum = in.nextInt();
+        if(courseNum == currentCourses.size() + 1)
+            return -1;
+        return --courseNum;
     }
     public static String prompt(String name) {
         System.out.println("Enter Your " + name);
