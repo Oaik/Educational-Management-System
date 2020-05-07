@@ -21,7 +21,7 @@ it will validate your input and in case of wrong input interval it will ask you 
 <img src="https://github.com/oaik/Educational-Management-System/blob/master/imagesandgifs/screenshot.png">
 <hr>
 
-<h3>📷 Demo:</h3>
+<h3>📷 Demo:</h3><b>[Outdated] some features has been added </b>
 <img width="1000px" src="https://github.com/oaik/Educational-Management-System/blob/master/imagesandgifs/sample.gif">
 <hr>
 
